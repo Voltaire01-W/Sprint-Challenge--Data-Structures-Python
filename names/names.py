@@ -1,55 +1,26 @@
 import time
-
+from names_bst import BSTNode
 start_time = time.time()
 
-f = open('C:/Users/Voltaire22/Desktop/Voltaire22/Data-Structures/Sprint-Challenge--Data-Structures-Python/names/names_1.txt', 'r')
+f = open('C:/Users/Voltaire22/Desktop/Voltaire22/Sprint-Challenge--Data-Structures-Python/names/names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-f = open('C:/Users/Voltaire22/Desktop/Voltaire22/Data-Structures/Sprint-Challenge--Data-Structures-Python/names/names_2.txt', 'r')
+f = open('C:/Users/Voltaire22/Desktop/Voltaire22/Sprint-Challenge--Data-Structures-Python/names/names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
+names_bst = BSTNode("")
 
 # Replace the nested for loops below with your improvements
-# ------------
-# Student note: I'll be keeping the old code so I can compare
-# my time with the processing time of the old one
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
-            # O(n)
-
-end_time = time.time()
-print('Original Code:')
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n")
-print (f"Original runtime: {end_time - start_time} seconds\n\n")
-
-# My code starts here
-start_time = time.time()
-
-names_1 = []
-with open('C:/Users/Voltaire22/Desktop/Voltaire22/Data-Structures/Sprint-Challenge--Data-Structures-Python/names/names_1.txt') as f:
-    names_1 = f.read().split('\n')
-
-names_2 = []
-with open('C:/Users/Voltaire22/Desktop/Voltaire22/Data-Structures/Sprint-Challenge--Data-Structures-Python/names/names_2.txt') as f:
-    names_2 = f.read().split('\n')
-
-duplicates = []
 for name in names_1:
-    if name in names_2:
+    names_bst.insert(name)
+
+for name in names_2:
+    if names_bst.contains(name):
         duplicates.append(name)
-# I think this is O(1), not sure I'm good at indentifying these yet =O
 
 end_time = time.time()
-print('New Code:')
-print(f'{len(duplicates)} duplicates:\n\n{", ".join(duplicates)}\n')
-print(f'New runtime: {end_time - start_time} seconds')
-
-# ---------- Stretch Goal -----------
-# Python has built-in tools that allow for a very efficient approach to this problem
-# What's the best time you can accomplish?  Thare are no restrictions on techniques or data
-# structures, but you may not import any additional libraries that you did not write yourself.
+print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print (f"runtime: {end_time - start_time} seconds")

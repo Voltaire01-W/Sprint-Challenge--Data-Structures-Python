@@ -42,7 +42,7 @@ class LinkedList:
         # searching for list
         if node is None:
             return
-        # pointing to head
+        # put new node at beginning
         if node.next_node is None:
             node.next_node = prev
             self.head = node

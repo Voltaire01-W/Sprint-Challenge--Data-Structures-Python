@@ -14,7 +14,7 @@ class RingBuffer:
             self.queue[self.index] = item
             # Increment the index for added item(s)
         self.index += 1
-        # If index +1 brings you over capacity
+        # If index is equal to capacity
         if self.index == self.capacity:
             # Reset the index
             self.index = 0
